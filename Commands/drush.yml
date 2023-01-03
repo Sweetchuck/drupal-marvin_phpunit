@@ -1,0 +1,19 @@
+marvin:
+  phpunit:
+    ##
+    # Keys are environment variant names.
+    #
+    # @var array
+    ##
+    testSuite:
+      ##
+      #   - null Run all.
+      #   - true Run all.
+      #   - false Run none
+      #   - bool[] Run all "true" test suite.
+      #           If all of them is "false" then run none.
+      #
+      # @var null|bool|bool[]
+      ##
+      localPreCommit:
+        Unit: true
