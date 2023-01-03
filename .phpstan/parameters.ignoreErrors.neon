@@ -1,0 +1,26 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method Robo\\\\Collection\\\\CollectionBuilder\\:\\:setHideStdOutput\\(\\)\\.$#"
+			count: 1
+			path: ../Commands/marvin_phpunit/TestCommandsBase.php
+
+		-
+			message: "#^Call to an undefined method Robo\\\\Collection\\\\CollectionBuilder\\:\\:setNoCoverage\\(\\)\\.$#"
+			count: 1
+			path: ../Commands/marvin_phpunit/TestCommandsBase.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: ../tests/src/Helper/DummyOutput.php
+
+		-
+			message: "#^Parameter \\#2 \\$commandFile of static method Robo\\\\Collection\\\\CollectionBuilder\\:\\:create\\(\\) expects Robo\\\\Tasks, null given\\.$#"
+			count: 1
+			path: ../tests/src/Helper/TaskBuilder.php
+
+		-
+			message: "#^Property Drupal\\\\Tests\\\\marvin_phpunit\\\\Unit\\\\Commands\\\\CommandsTestBase\\:\\:\\$commands \\(Drush\\\\Commands\\\\marvin\\\\CommandsBase\\) does not accept object\\.$#"
+			count: 1
+			path: ../tests/src/Unit/Commands/CommandsTestBase.php
