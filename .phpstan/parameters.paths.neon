@@ -1,5 +1,4 @@
 parameters:
 	paths:
-		- ../Commands/
-#		- ../src/
+		- ../src/
 		- ../tests/src/

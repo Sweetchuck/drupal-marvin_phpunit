@@ -19,16 +19,16 @@
         "sort-packages": true
     },
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "consolidation/robo": "^5.0",
-        "drupal/marvin": "4.x-dev",
+        "drupal/marvin": "11.3.x-dev",
         "sweetchuck/robo-phpunit": "4.x-dev",
         "sweetchuck/utils": "2.x-dev"
     },
     "require-dev": {
         "behat/mink": "^1.10",
         "behat/mink-browserkit-driver": "^2.1",
-        "drush/drush": "^12.1",
+        "drush/drush": "^13.7",
         "mikey179/vfsstream": "^1.6",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^11.0",
@@ -37,19 +37,11 @@
         "weitzman/drupal-test-traits": "^2.1"
     },
     "suggest": {
-        "drush/drush": "^13.0"
+        "drush/drush": "^13.7"
     },
     "autoload": {
         "psr-4": {
-            "Drush\\Commands\\marvin_phpunit\\": "Commands/marvin_phpunit/",
             "Drupal\\marvin_phpunit\\": "src/"
-        }
-    },
-    "extra": {
-        "drush": {
-            "services": {
-                "drush.services.yml": "*"
-            }
         }
     }
 }

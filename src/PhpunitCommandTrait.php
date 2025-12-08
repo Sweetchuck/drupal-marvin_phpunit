@@ -2,20 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Drush\Commands\marvin_phpunit;
+namespace Drupal\marvin_phpunit;
 
-use Drush\Commands\marvin\CommandsBase;
 use Robo\Contract\TaskInterface;
 use Sweetchuck\Robo\PHPUnit\PHPUnitTaskLoader;
 use Sweetchuck\Utils\Filter\EnabledFilter;
 
-class TestCommandsBase extends CommandsBase {
+trait PhpunitCommandTrait {
 
   use PHPUnitTaskLoader;
-
-  protected static string $classKeyPrefix = 'marvin.phpunit';
-
-  protected string $customEventNamePrefix = 'marvin:phpunit';
 
   /**
    * @phpstan-param array<string, mixed> $options
@@ -23,7 +18,6 @@ class TestCommandsBase extends CommandsBase {
    * @return \Sweetchuck\Robo\PHPUnit\Task\RunTask|\Robo\Collection\CollectionBuilder
    */
   protected function getTaskPhpUnitRun(array $options): TaskInterface {
-    $this->initComposerInfo();
     $options += [
       'phpunitExecutable' => $this->getPhpUnitExecutable(),
     ];
@@ -31,8 +25,8 @@ class TestCommandsBase extends CommandsBase {
     $task = $this->taskPHPUnitRun($options);
     $task->setHideStdOutput(FALSE);
 
-    $gitHook = $this->getConfig()->get('marvin.gitHook');
-    if ($gitHook === 'pre-commit') {
+    $gitHookName = $this->getConfig()->get('marvin.gitHookName');
+    if ($gitHookName === 'pre-commit') {
       $task->setNoCoverage(TRUE);
       // @todo $task->setNoLogging(true);
     }
@@ -60,8 +54,6 @@ class TestCommandsBase extends CommandsBase {
   }
 
   protected function getPhpUnitExecutable(): string {
-    $composerInfo = $this->getComposerInfo();
-
     $binDir = 'vendor/bin';
     if (isset($composerInfo['config']['bin-dir'])) {
       $binDir = $composerInfo['config']['bin-dir'];
@@ -109,5 +101,4 @@ class TestCommandsBase extends CommandsBase {
 
     return $state ? 'always' : 'never';
   }
-
 }
